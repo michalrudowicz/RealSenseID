@@ -111,6 +111,7 @@ LinuxSerial::LinuxSerial(const SerialConfig& config) : _config {config}
 
 SerialStatus LinuxSerial::SendBytes(const char* buffer, size_t n_bytes)
 {
+    ::tcflush(_handle, TCIOFLUSH);
     size_t bytes_sent = 0;
     while (n_bytes > bytes_sent)
     {
