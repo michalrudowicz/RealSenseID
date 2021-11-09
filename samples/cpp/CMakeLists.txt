@@ -7,6 +7,11 @@ if(NOT RSID_SECURE)
     target_link_libraries(authenticate-cpp-sample PRIVATE rsid)
     set_target_properties(authenticate-cpp-sample PROPERTIES FOLDER "samples/cpp")
 
+    # authenticate-loop
+    add_executable(authenticate-loop-cpp-sample authenticate-loop.cc)
+    target_link_libraries(authenticate-loop-cpp-sample PRIVATE rsid)
+    set_target_properties(authenticate-loop-cpp-sample PROPERTIES FOLDER "samples/cpp")
+
     # enroll
     add_executable(enroll-cpp-sample enroll.cc)
     target_link_libraries(enroll-cpp-sample PRIVATE rsid)
