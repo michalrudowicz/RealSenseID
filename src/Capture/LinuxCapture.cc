@@ -36,6 +36,7 @@ static void ThrowIfFailed(const char* what, int res)
         return;
     std::stringstream err_stream;
     err_stream << what << " v4l failed with error.";
+    LOG_ERROR(LOG_TAG, "v4l failed with error: %s", what);
     throw std::runtime_error(err_stream.str());
 }
 
