@@ -69,11 +69,15 @@ private:
 
 V4lNode::V4lNode(int camera_number,v4l2_format format):_type(format.type)
 {
+    LOG_INFO(LOG_TAG, "Opening camera %d", camera_number);
     try
     {
         // open device
         std::string dev_md = VIDEO_DEV + std::to_string(camera_number);
         _fd = open(dev_md.c_str(), O_RDWR | O_NONBLOCK, 0);
+        if (_fd == -1) {
+            perror("open()\n");
+        }
         ThrowIfFailed("fd_md", _fd);
 
         // set format
